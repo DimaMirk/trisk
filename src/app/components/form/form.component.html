@@ -1,0 +1,28 @@
+
+<div class="conteiner d-flex justify-content-center mt-5">
+    <div class="border border-primary p-4">
+        <form [formGroup]="form">
+            <div>
+              <label>Text Input:</label>
+              <input formControlName="textInput" />
+            </div>
+          
+            <div>
+              <label>
+                Radio Input:
+                <input formControlName="radioInput"  type="radio" value="option1"> Option 1
+                <input formControlName="radioInput"  type="radio" value="option2"> Option 2
+              </label>
+            </div>
+          
+            <div>
+              <label>Checkbox Input:</label>
+              <input type="checkbox"  formControlName="checkboxInput" />
+            </div>
+          </form>
+          <div *ngIf="showUpdateMessage" class="update-message">
+            Data updated successfully!
+          </div>
+    </div> 
+</div>
+
