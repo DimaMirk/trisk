@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, Subscription, switchMap } from 'rxjs';
@@ -14,7 +14,7 @@ import { FormService } from '../../services/form.service';
   styleUrl: './form.component.scss'
 })
 
-export class FormComponent implements OnInit, OnDestroy{
+export class FormComponent implements OnInit, OnDestroy, AfterViewInit{
 
   form: FormGroup;
   private subscription: Subscription = new Subscription();
@@ -46,9 +46,12 @@ export class FormComponent implements OnInit, OnDestroy{
         }
       })
     );
-    this.cdr.detectChanges();
+    
   }
 
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
+  }
 
   updateForm(data: FormData | null) {
     if (data) {
